@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Residência T4 Mobilada - 350.000 Kz</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .anuncio-card {
+            background-color: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .imagem-container {
+            background: linear-gradient(135deg, #4a90e2, #5e72e4);
+            padding: 25px;
+            text-align: center;
+            color: white;
+        }
+        
+        .imagem-codigo {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 18px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            margin-top: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .anuncio-header {
+            background: linear-gradient(135deg, #4a90e2, #5e72e4);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .anuncio-titulo {
+            font-size: 22px;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .anuncio-preco {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        
+        .btn-detalhes {
+            background-color: white;
+            color: #4a90e2;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin: 0 auto;
+        }
+        
+        .btn-detalhes:hover {
+            background-color: #f0f0f0;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+        
+        .btn-detalhes .icone {
+            transition: transform 0.3s ease;
+        }
+        
+        .btn-detalhes.ativo .icone {
+            transform: rotate(180deg);
+        }
+        
+        .anuncio-detalhes {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+            padding: 0 20px;
+        }
+        
+        .anuncio-detalhes.expandido {
+            max-height: 1000px;
+            padding: 20px;
+        }
+        
+        .detalhes-titulo {
+            color: #4a90e2;
+            margin-bottom: 15px;
+            font-size: 18px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+        
+        .detalhes-lista {
+            list-style-type: none;
+            margin-bottom: 20px;
+        }
+        
+        .detalhes-lista li {
+            padding: 8px 0;
+            border-bottom: 1px solid #f5f5f5;
+            display: flex;
+        }
+        
+        .detalhes-lista li:before {
+            content: "✓";
+            color: #4a90e2;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        .info-contato {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            text-align: center;
+        }
+        
+        .telefone {
+            font-size: 20px;
+            font-weight: 700;
+            color: #4a90e2;
+            margin: 10px 0;
+        }
+        
+        .negocio-seguro {
+            background-color: #e8f4fd;
+            padding: 10px;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 15px;
+            font-weight: 600;
+            color: #2c6fb7;
+        }
+        
+        .codigo-imagem {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            font-family: monospace;
+            text-align: center;
+            font-weight: bold;
+            color: #4a90e2;
+            border: 1px dashed #4a90e2;
+        }
+    </style>
+</head>
+<body>
+    <div class="anuncio-card">
+        <div class="imagem-container">
+            <h3>Imagem da Residência</h3>
+            <div class="imagem-codigo">KAR MULAK YUNGS DIANED DIN EER PARK</div>
+        </div>
+        
+        <div class="anuncio-header">
+            <h2 class="anuncio-titulo">Residência T4 Mobilada</h2>
+            <div class="anuncio-preco">350.000 Kz</div>
+            <button class="btn-detalhes" id="btnDetalhes">
+                <span>Ver detalhes</span>
+                <svg class="icone" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4 6L8 10L12 6" stroke="#4a90e2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+        </div>
+        
+        <div class="anuncio-detalhes" id="detalhes">
+            <h3 class="detalhes-titulo">Detalhes da Propriedade</h3>
+            
+            <p><strong>Localização:</strong> 4 de Abril</p>
+            <p><strong>Tipologia:</strong> T4 – 4 Quartos</p>
+            
+            <ul class="detalhes-lista">
+                <li>Totalmente mobilada</li>
+                <li>Sala equipada</li>
+                <li>Cozinha com eletrodomésticos</li>
+                <li>Casas de banho funcionais</li>
+                <li>Água e luz disponíveis</li>
+            </ul>
+            
+            <p><strong>Preço:</strong> 350.000 Kz (negociável)</p>
+            
+            <div class="codigo-imagem">
+                Código da Imagem: KAR MULAK YUNGS DIANED DIN EER PARK
+            </div>
+            
+            <div class="info-contato">
+                <p><strong>Contacto:</strong></p>
+                <div class="telefone">935 544 477</div>
+            </div>
+            
+            <div class="negocio-seguro">
+                😇😇😇 Negócio Seguro Você Faz Aqui 😇😇😇
+            </div>
+            
+            <p style="margin-top: 15px; text-align: center; font-style: italic;">
+                Pronta a habitar. Interessados, só ligar! ✅
+            </p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('btnDetalhes').addEventListener('click', function() {
+            const detalhes = document.getElementById('detalhes');
+            const btn = document.getElementById('btnDetalhes');
+            
+            if (detalhes.classList.contains('expandido')) {
+                detalhes.classList.remove('expandido');
+                btn.innerHTML = '<span>Ver detalhes</span><svg class="icone" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 6L8 10L12 6" stroke="#4a90e2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+                btn.classList.remove('ativo');
+            } else {
+                detalhes.classList.add('expandido');
+                btn.innerHTML = '<span>Ocultar detalhes</span><svg class="icone" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 6L8 10L12 6" stroke="#4a90e2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+                btn.classList.add('ativo');
+            }
+        });
+    </script>
+</body>
+</html>
